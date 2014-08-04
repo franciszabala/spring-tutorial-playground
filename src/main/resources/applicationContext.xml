@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="helloWorld" class="com.franciszabala.playground.HelloWorld">
+		<property name="greetingMsg" value="Hola" />
+		<property name="receivingMsg" value = "mundo" />
+	</bean>
+	
+	<!-- Sometimes you have to change how the message is displayed/outputted -->
+	
+	<bean id="messageRenderer" class="com.franciszabala.playground.renderer.SystemOutRenderer">
+	</bean>
+	<!-- 
+	 <bean id="messageRenderer" class="com.franciszabala.playground.renderer.FileOutRenderer">
+	</bean>
+	  -->
+	<bean id="messageDao" class="com.franciszabala.playground.dao.MessageDaoImpl">
+	</bean>
+	
+	<bean id="greeterOfDeveloper" class="com.franciszabala.playground.GreeterOfDeveloper">
+		<property name="msgRen" ref="messageRenderer"></property>
+		<property name="msgDao" ref="messageDao"></property>
+	</bean>
+	
+	<bean id="livingRoomAquarium"
+		class="com.franciszabala.playground.Aquarium">
+		
+		<property name="accessories">
+			<list>
+				<value>Volcanic gravel</value>
+				<value>CO2 atomizer</value>
+				<value>Wave generator</value>
+			</list>
+		</property>
+	</bean>
+
+
+</beans>
